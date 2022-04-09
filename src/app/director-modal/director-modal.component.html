@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Director: {{ data.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-dialog-content>
+    <span>Name:</span> {{ data.name }}
+  </mat-dialog-content>
+  <mat-dialog-content>
+      <span>Bio:</span> {{ data.bio }}
+  </mat-dialog-content>
+  <mat-dialog-content>
+      <span>Birth:</span> {{ data.birth }}
+  </mat-dialog-content>
+  <mat-dialog-content>
+      <span>Death:</span> {{ data.death }}
+  </mat-dialog-content>
+  <mat-card-footer>
+    <button
+      aria-label='close dialog'
+      mat-raised-button 
+      (click)='cancel()' 
+      type='button'
+    >Close
+    </button>
+  </mat-card-footer>
+</mat-card>
