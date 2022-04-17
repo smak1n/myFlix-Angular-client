@@ -60,7 +60,7 @@ export class MovieCardComponent implements OnInit {
   // api request for deleting movie to user favorite list
   deleteFavoriteMovie(movieId: string, title: string): void{
     this.fetchDataApi
-        .deleteFavoriteMovies(movieId)
+        .deleteFavoriteMovie(movieId)
         .subscribe((resp) => {
           localStorage.setItem('user', JSON.stringify(resp));
           this.snackBar.open( `${title} has been removed from your favorite list`, 'OK', {

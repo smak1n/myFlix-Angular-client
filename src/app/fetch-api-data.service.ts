@@ -112,7 +112,7 @@ export class FetchApiDataService {
       );
   }
 
-  deleteFavoriteMovies(MovieID: any): Observable<any> {
+  deleteFavoriteMovie(MovieID: any): Observable<any> {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return this.http

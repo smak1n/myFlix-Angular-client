@@ -93,7 +93,7 @@ export class UserProfileComponent implements OnInit {
     const title = movie.Title;
 
     this.fetchDataApi
-        .deleteFavoriteMovies(movieId)
+        .deleteFavoriteMovie(movieId)
         .subscribe((resp) => {
           localStorage.setItem('user', JSON.stringify(resp));
           this.snackBar.open( `${title} has been removed from your favorite list`, 'OK', {
