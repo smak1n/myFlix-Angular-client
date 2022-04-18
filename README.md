@@ -1,26 +1,29 @@
 # MyFlixAngularClient
 
+MyFlixAngularClient is a client-side Single Page Application based on its existing backend code using REST API and Database with supported documentation
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
-## Development server
+## Key Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Displays a welcome screen, where users are able to either log in or register
+- Allows authenticated users to view details about movies, genres, directors and synopsis
+- Users are able to update or delete their profile
+- Users are able to add or remove movies from their list of favorites
 
-## Code scaffolding
+## Technologies Used
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular
+- Angular Material
+- TypeScript, HTML, SCSS
 
-## Build
+![Markdown Logo](/src/assets/welcomescreen.jpg)
+![Markdown Logo](/src/assets/moviesscreen.jpg)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalation
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Run `npm install` to install project dependencies.
+- Install the Angular CLI by running `npm install -g @angular/cli`.
+- Run `ng serve` for a local server. Navigate to `http://localhost:4200/`.
 
 ## Further help
 
