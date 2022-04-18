@@ -3,6 +3,10 @@
 MyFlixAngularClient is a client-side Single Page Application based on its existing backend code using REST API and Database with supported documentation.<br>
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
+## Demo
+
+[Live version](https://smak1n.github.io/myFlix-Angular-client/welcome)
+
 ## Key Features
 
 - Displays a welcome screen, where users are able to either log in or register
