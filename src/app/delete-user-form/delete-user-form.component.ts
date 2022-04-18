@@ -1,3 +1,8 @@
+/**
+ * The DeleteUserFormComponent renders a mat dialog with options to delete user profile or cancel deletion.
+ * @module DeleteUserFormComponent
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service'
 import { Router } from '@angular/router';
@@ -22,7 +27,11 @@ export class DeleteUserFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //Upon deletion, user will be removed, local  storage cleared and the user will be brought back to welcome page  
+  /**
+   * 
+   * Upon confirming deletion, user will be removed, local  storage cleared and the user will be brought back to welcome page
+   */
+
   deleteUser(): void {
     const { Username } = this.user;
 
@@ -36,7 +45,6 @@ export class DeleteUserFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  //cancel function to close dialog
   cancel(): void {
     this.dialogRef.close();
   }

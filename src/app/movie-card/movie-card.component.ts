@@ -1,3 +1,9 @@
+/**
+ * The MovieCardComponent renders list of movies fetched from myFlix API.
+ * Movie card component displays movie title, image and director/genre/synposis/fav buttons.
+ * @module MovieCardComponent
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FetchApiDataService } from '../fetch-api-data.service';
@@ -17,18 +23,32 @@ export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   favoriteMovies: any[] = [];
 
+
+  /**
+   * Injecting FetchApiDataService, MatDialog and MatSnackBar dependency into MovieCardComponent contructor.
+   * @param fetchDataApi Api Service Class
+   * @param dialog Class used to show dialogs 
+   * @param snackBar Class used to show notification
+   */ 
   constructor(
     public fetchDataApi: FetchApiDataService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
   ) {}
-
+  
+  /**
+   * Calls getMovies and getFavoriteMovies during component initialize to populate the data.
+   */
   ngOnInit(): void {
     this.getMovies();
     this.getFavoriteMovies();
   }
   
-  // fetching movies data
+  /**
+   * Invokes getAllMovies fetchDataApi service and populates the movie array with response.
+   * @function getMovies
+   * @returns an array of movie objects in JSON format
+   */
   getMovies(): void {
     this.fetchDataApi
         .getAllMovies()
@@ -38,13 +58,22 @@ export class MovieCardComponent implements OnInit {
         });
   }
 
-  // fetching favorite movies data
+  /**
+   * getFavoriteMovies function fetch user data from local storage.
+   * @function getFavoriteMovies 
+   */
   getFavoriteMovies(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     this.favoriteMovies = user.FavoriteMovies;    
   }
 
-  // api request for adding movie to user favorite list
+  /**
+   * Invokes addFavoriteMovie api with movieID and user data. API returns a user object with updated favorite list. 
+   * If successful, updates a user object on local storage and shows a popup message after adding movie to user favorite list.
+   * @function addFavoriteMovie
+   * @param movieId id of the clicked movie
+   * @param title Title of the clicked movie  
+   */
   addFavoriteMovie(movieId: string, title: string): void{
     this.fetchDataApi
         .addFavoriteMovies(movieId)
@@ -57,7 +86,13 @@ export class MovieCardComponent implements OnInit {
         });
   }
 
-  // api request for deleting movie to user favorite list
+  /**
+   * Invokes deleteFavoriteMovie api with movieID and user data. Api returns a user object with updated favorite list. 
+   * If successful, updates a user object on local storage and shows a popup message after removing movie from user favorite list.
+   * @function deleteFavoriteMovie
+   * @param movieId id of the clicked movie
+   * @param title Title of the clicked movie  
+   */
   deleteFavoriteMovie(movieId: string, title: string): void{
     this.fetchDataApi
         .deleteFavoriteMovie(movieId)
@@ -70,7 +105,12 @@ export class MovieCardComponent implements OnInit {
         });
   }
 
-  // open a dialog to dispaly Genre details
+  /**
+   * Opens a dialog to display the Genre component.
+   * @function openGenreDialog
+   * @param name Genre of the clicked movie
+   * @param description Description of the clicked movie 
+   */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreModalComponent, {
       data: { name, description},
@@ -78,7 +118,14 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  // open a dialog to display director details
+  /**
+   * Opens a dialog to display the Director component.
+   * @function openDirectorDialog
+   * @param name Director name of the clicked movie
+   * @param bio Director bio of the clicked movie 
+   * @param birth Director birthdate of the clicked movie 
+   * @param death Director deathdate of the clicked movie 
+   */
   openDirectorDialog( 
     name: string, 
     bio: string ,
@@ -93,13 +140,23 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-   // format date
+   /**
+   * Converts date from string to Date object format
+   * @function getFormatedDate
+   * @param date Date in string
+   * @param format Required date format   
+   */
    getFormatedDate(date: any, format: string) {
     const datePipe = new DatePipe('en-US');
     return datePipe.transform(date, format);
   }
 
-  // open a dialog to display movie deatils
+  /**
+   * Opens a dialog to display the Synposis component.
+   * @function openSynposisDialog
+   * @param title Title of the clicked movie
+   * @param description Description of the clicked movie
+   */
   openSynopsisDialog(title: string, description: string): void {
     this.dialog.open(SynopsisModalComponent, {
       data: { title, description},
@@ -108,12 +165,21 @@ export class MovieCardComponent implements OnInit {
   }
 
 
-  // check whether movie is user favorite?
+  /**
+   * isFavorite function checks whether movie is user favorite
+   * @function isFavorite
+   * @param movieID string
+   * @returns boolean 
+   */
   isFavorite(movieID: string): boolean {    
     return this.favoriteMovies.some( id => id === movieID);
   } 
 
-  // add or remove movie from user favorite list
+  /**
+   * toggleFavoriteMovie function adds or removes a movie from user favorite list 
+   * @function toggleFavoriteMovie
+   * @returns addFavoriteMovie or deleteFavoriteMovie function  
+   */
   toggleFavoriteMovie(movie: any): void {
     this.isFavorite(movie._id)
       ? this.deleteFavoriteMovie(movie._id, movie.Title)
