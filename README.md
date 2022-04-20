@@ -27,6 +27,9 @@ I'm using Node v16.14.0
 
 ## Instalation
 
+This project requires npm in order to install package dependencies. You can download it from here [node.js.org](https://nodejs.org/en/) . <br>
+I would suggest using the LTS version which is recommended for most users.
+
 - Run `npm install` to install project dependencies.
 - Install the Angular CLI by running `npm install -g @angular/cli`.
 - Run `ng serve` for a local server. Navigate to `http://localhost:4200/`.
