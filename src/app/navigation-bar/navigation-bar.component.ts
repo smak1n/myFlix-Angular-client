@@ -1,3 +1,9 @@
+/**
+ * The NavigationBarComponent displays the navbar at the top of the page after the user has logged in. The navbar includes
+ * links to the different routes of the app: "movies", "profile", and a button that allows users to logout.
+ * @module NavigationBarComponent
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
